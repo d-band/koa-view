@@ -1,5 +1,8 @@
 # koa-view
 
+[![Dependency Status](https://david-dm.org/d-band/koa-view.svg)](https://david-dm.org/d-band/koa-view)
+[![Build Status](https://travis-ci.org/d-band/koa-view.svg?branch=master)](https://travis-ci.org/d-band/koa-view)
+
 Template rendering middleware for koa (using [nunjucks](https://github.com/mozilla/nunjucks)).
 
 ## Installation
