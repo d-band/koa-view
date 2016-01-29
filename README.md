@@ -2,6 +2,7 @@
 
 [![Dependency Status](https://david-dm.org/d-band/koa-view.svg)](https://david-dm.org/d-band/koa-view)
 [![Build Status](https://travis-ci.org/d-band/koa-view.svg?branch=master)](https://travis-ci.org/d-band/koa-view)
+[![Coverage Status](https://coveralls.io/repos/github/d-band/koa-view/badge.svg?branch=master)](https://coveralls.io/github/d-band/koa-view?branch=master)
 
 Template rendering middleware for koa (using [nunjucks](https://github.com/mozilla/nunjucks)).
 
