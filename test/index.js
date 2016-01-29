@@ -8,7 +8,21 @@ describe('koa-views', function() {
     var app = koa()
       .use(views(__dirname))
       .use(function*() {
-        yield this.render('./fixtures/basic', { html: 'html' });
+        yield this.render('fixtures/basic', { html: 'html' });
+      });
+
+    request(app.listen()).get('/')
+      .expect('Content-Type', /html/)
+      .expect(/basic:html/)
+      .expect(200, done);
+  });
+
+  it('should render default path views', function(done) {
+    process.chdir('test');
+    var app = koa()
+      .use(views())
+      .use(function*() {
+        yield this.render('basic', { html: 'html' });
       });
 
     request(app.listen()).get('/')
@@ -22,7 +36,7 @@ describe('koa-views', function() {
       .use(views(__dirname))
       .use(function*() {
         this.state = { html: 'html' };
-        yield this.render('./fixtures/basic');
+        yield this.render('fixtures/basic');
       });
 
     request(app.listen()).get('/')
@@ -37,7 +51,7 @@ describe('koa-views', function() {
         ext: 'tpl'
       }))
       .use(function*() {
-        yield this.render('./fixtures/tpl', { tpl: 'tpl' });
+        yield this.render('fixtures/tpl', { tpl: 'tpl' });
       });
 
     request(app.listen()).get('/')
@@ -56,7 +70,7 @@ describe('koa-views', function() {
         }
       }))
       .use(function*() {
-        yield this.render('./fixtures/filter', { msg: '1234567' });
+        yield this.render('fixtures/filter', { msg: '1234567' });
       });
 
     request(app.listen()).get('/')
@@ -73,7 +87,7 @@ describe('koa-views', function() {
         }
       }))
       .use(function*() {
-        yield this.render('./fixtures/global');
+        yield this.render('fixtures/global');
       });
 
     request(app.listen()).get('/')

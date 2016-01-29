@@ -1,5 +1,6 @@
 'use strict';
 
+const resolve = require('path').resolve;
 const nunjucks = require('nunjucks');
 
 /**
@@ -9,6 +10,7 @@ const nunjucks = require('nunjucks');
  * @return {[type]}      [description]
  */
 module.exports = (path, opts) => {
+  path = path || resolve('views');
   opts = opts || {};
   const ext = '.' + (opts.ext || 'html');
   const env = nunjucks.configure(path, opts);
