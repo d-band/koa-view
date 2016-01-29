@@ -1,0 +1,36 @@
+{
+  "name": "koa-view",
+  "version": "0.0.1",
+  "description": "koa view use nunjucks",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --harmony --reporter spec",
+    "coveralls": "istanbul cover _mocha -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/d-band/koa-view.git"
+  },
+  "keywords": [
+    "koa",
+    "view",
+    "nunjucks"
+  ],
+  "author": "d-band",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/d-band/koa-view/issues"
+  },
+  "homepage": "https://github.com/d-band/koa-view#readme",
+  "dependencies": {
+    "nunjucks": "^2.3.0"
+  },
+  "devDependencies": {
+    "coveralls": "^2.11.6",
+    "istanbul": "^0.4.2",
+    "koa": "^1.1.2",
+    "mocha": "^2.4.5",
+    "should": "^8.2.1",
+    "supertest": "^1.1.0"
+  }
+}
