@@ -13,7 +13,7 @@ Template rendering middleware for koa (using [nunjucks](https://github.com/mozil
 $ npm install koa-view
 ```
 
-## Example (koa 1.x)
+## [Example (koa 1.x)](./examples/demo-koa1)
 
 ```js
 var views = require('koa-view');
@@ -33,7 +33,7 @@ app.use(function* (next) {
 });
 ```
 
-## Example (koa 2.x)
+## [Example (koa 2.x)](./examples/demo-koa2)
 
 > Plz using [koa-convert](https://github.com/koajs/convert)
 
@@ -61,7 +61,7 @@ app.use(async (ctx, next) => {
 app.listen(3000);
 ```
 
-More examples: [tests](./test/index.js) [examples](./examples)
+More examples: [tests](./test/index.js)
 
 ## API
 
