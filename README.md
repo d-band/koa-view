@@ -28,7 +28,7 @@ app.use(function* (next) {
   };
 
   yield this.render('user', {
-    user: 'John'
+    user: 'Coder'
   });
 });
 ```
@@ -38,16 +38,27 @@ app.use(function* (next) {
 > Plz using [koa-convert](https://github.com/koajs/convert)
 
 ```js
-app.use(convert(views(__dirname)))
+import co from 'co';
+import Koa from 'koa';
+import view from 'koa-view';
+import convert from 'koa-convert';
+
+const app = new Koa();
+
+app.use(convert(view()));
 
 app.use(async (ctx, next) => {
-  ctx.render = co.wrap(ctx.render)
-  await next()
-})
+  ctx.render = co.wrap(ctx.render);
+  await next();
+});
 
 app.use(async (ctx, next) => {
-  yield this.render('./user')
-})
+  await ctx.render('index', {
+    user: 'Coder'
+  });
+});
+
+app.listen(3000);
 ```
 
 More examples: [tests](./test/index.js)
