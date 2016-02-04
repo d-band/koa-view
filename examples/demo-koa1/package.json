@@ -1,0 +1,19 @@
+{
+  "name": "demo-koa1",
+  "version": "0.0.1",
+  "description": "koa-view demo for koa@1",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [
+    "koa-view",
+    "demo",
+    "koa@1"
+  ],
+  "author": "d-band",
+  "license": "MIT",
+  "dependencies": {
+    "koa": "^1.1.2",
+    "koa-view": "latest"
+  }
+}
