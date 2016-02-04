@@ -61,7 +61,7 @@ app.use(async (ctx, next) => {
 app.listen(3000);
 ```
 
-More examples: [tests](./test/index.js)
+More examples: [tests](./test/index.js) [examples](./examples)
 
 ## API
 
