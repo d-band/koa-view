@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/d-band/koa-view#readme",
   "dependencies": {
-    "nunjucks": "^2.5.2"
+    "nunjucks": "^3.0.0"
   },
   "devDependencies": {
     "coveralls": "^2.11.14",
