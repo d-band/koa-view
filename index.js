@@ -33,12 +33,12 @@ module.exports = (path, opts) => {
     // Render `view` with `locals` and `koa.ctx.state`.
     Object.assign(this, {
       render: function*(view, locals) {
-        let state = Object.assign(locals || {}, this.state);
+        let state = Object.assign({}, this.state, locals);
 
         this.type = 'text/html';
         this.body = yield render.bind(null, view + ext, state);
       }
-    })
+    });
 
     yield next;
   };
