@@ -13,13 +13,13 @@ Template rendering middleware for koa (using [nunjucks](https://github.com/mozil
 $ npm install koa-view
 ```
 
-## [Example (koa 1.x)](./examples/demo-koa1)
+## [Example](./examples/demo-koa)
 
 ```js
-var views = require('koa-view');
+var view = require('koa-view');
 
 // Must be used before any router is used
-app.use(views(__dirname + '/views'));
+app.use(view(__dirname + '/views'));
 
 app.use(function* (next) {
   this.state = {
@@ -33,43 +33,15 @@ app.use(function* (next) {
 });
 ```
 
-## [Example (koa 2.x)](./examples/demo-koa2)
-
-> Plz using [koa-convert](https://github.com/koajs/convert)
-
-```js
-import co from 'co';
-import Koa from 'koa';
-import view from 'koa-view';
-import convert from 'koa-convert';
-
-const app = new Koa();
-
-app.use(convert(view()));
-
-app.use(async (ctx, next) => {
-  ctx.render = co.wrap(ctx.render);
-  await next();
-});
-
-app.use(async (ctx, next) => {
-  await ctx.render('index', {
-    user: 'Coder'
-  });
-});
-
-app.listen(3000);
-```
-
 More examples: [tests](./test/index.js)
 
 ## API
 
-#### `views(root, opts)`
+#### `view(root, opts)`
 
-* `root`: (default `views`) Views location. All views you `render()` are relative to this path.
+* `root`: (default `views`) Views location. All view you `render()` are relative to this path.
 * `opts` [nunjucks configure opts](http://mozilla.github.io/nunjucks/api.html#configure)
-* `opts.ext`: (default `html`) Extension for your views
+* `opts.ext`: (default `html`) Extension for your view
 
 ```js
 // instead of this
