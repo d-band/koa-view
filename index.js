@@ -15,31 +15,34 @@ module.exports = (path, opts) => {
   const ext = '.' + (opts.ext || 'html');
   const env = nunjucks.configure(path, opts);
 
-  let filters = opts.filters || {};
-  for (let f in filters) {
-    env.addFilter(f, filters[f]);
-  }
+  const filters = opts.filters || {};
+  const globals = opts.globals || {};
 
-  let globals = opts.globals || {};
-  for (let g in globals) {
-    env.addGlobal(g, globals[g]);
-  }
+  Object.keys(filters).forEach(k => {
+    env.addFilter(k, filters[k]);
+  });
+  Object.keys(globals).forEach(k => {
+    env.addGlobal(k, globals[k]);
+  });
 
-  return function* view(next) {
-    if (this.render) return yield next;
+  return function view(ctx, next) {
+    if (ctx.render) return next();
 
-    var render = nunjucks.render;
-
+    const render = nunjucks.render;
     // Render `view` with `locals` and `koa.ctx.state`.
-    Object.assign(this, {
-      render: function*(view, locals) {
-        let state = Object.assign({}, this.state, locals);
+    ctx.render = (view, locals) => {
+      const state = Object.assign({}, ctx.state, locals);
 
-        this.type = 'text/html';
-        this.body = yield render.bind(null, view + ext, state);
-      }
-    });
+      return new Promise((res, rej) => {
+        render(view + ext, state, (err, html) => {
+          if (err) return rej(err);
+          ctx.type = 'text/html';
+          ctx.body = html;
+          res();
+        });
+      });
+    };
 
-    yield next;
+    return next();
   };
 };

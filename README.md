@@ -16,18 +16,18 @@ $ npm install koa-view
 ## [Example](./examples/simple)
 
 ```js
-var view = require('koa-view');
+const view = require('koa-view');
 
 // Must be used before any router is used
 app.use(view(__dirname + '/views'));
 
-app.use(function* (next) {
-  this.state = {
-    session: this.session,
+app.use(async function (ctx) {
+  ctx.state = {
+    session: ctx.session,
     title: 'app'
   };
 
-  yield this.render('user', {
+  await ctx.render('user', {
     user: 'Coder'
   });
 });
@@ -45,9 +45,17 @@ More examples: [tests](./test/index.js)
 
 ```js
 // instead of this
-yield this.render('user.html')
+await ctx.render('user.html')
 // you can
-yield this.render('user')
+await ctx.render('user')
+```
+
+## Koa 1 Support
+
+To use `koa-view` with koa@1, please use [koa-view 1.x](https://github.com/d-band/koa-view/tree/v1.x).
+
+```bash
+npm install koa-view@1 --save
 ```
 
 ## License

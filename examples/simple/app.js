@@ -1,11 +1,11 @@
-var koa = require('koa');
-var view = require('koa-view');
+const Koa = require('koa');
+const view = require('koa-view');
 
-var app = koa();
+const app = new Koa();
 
 app.use(view());
-app.use(function*() {
-  yield this.render('index', {
+app.use(async function (ctx) {
+  await ctx.render('index', {
     user: 'Coder'
   });
 });

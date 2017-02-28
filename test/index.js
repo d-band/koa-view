@@ -1,14 +1,14 @@
-var request = require('supertest');
-var views = require('../');
-var should = require('should');
-var koa = require('koa');
+const request = require('supertest');
+const view = require('../');
+const should = require('should');
+const Koa = require('koa');
 
-describe('koa-views', function() {
+describe('koa-view', function() {
   it('should render basic', function(done) {
-    var app = koa()
-      .use(views(__dirname))
-      .use(function*() {
-        yield this.render('fixtures/basic', { html: 'html' });
+    const app = new Koa();
+    app.use(view(__dirname))
+      .use(ctx => {
+        return ctx.render('fixtures/basic', { html: 'html' });
       });
 
     request(app.listen()).get('/')
@@ -17,12 +17,12 @@ describe('koa-views', function() {
       .expect(200, done);
   });
 
-  it('should render default path views', function(done) {
+  it('should render default path view', function(done) {
     process.chdir('test');
-    var app = koa()
-      .use(views())
-      .use(function*() {
-        yield this.render('basic', { html: 'html' });
+    const app = new Koa();
+    app.use(view())
+      .use(ctx => {
+        return ctx.render('basic', { html: 'html' });
       });
 
     request(app.listen()).get('/')
@@ -32,11 +32,11 @@ describe('koa-views', function() {
   });
 
   it('should render ctx state', function(done) {
-    var app = koa()
-      .use(views(__dirname))
-      .use(function*() {
-        this.state = { html: 'html' };
-        yield this.render('fixtures/basic');
+    const app = new Koa();
+    app.use(view(__dirname))
+      .use(ctx => {
+        ctx.state = { html: 'html' };
+        return ctx.render('fixtures/basic');
       });
 
     request(app.listen()).get('/')
@@ -46,12 +46,12 @@ describe('koa-views', function() {
   });
 
   it('should render with tpl ext', function(done) {
-    var app = koa()
-      .use(views(__dirname, {
+    const app = new Koa();
+    app.use(view(__dirname, {
         ext: 'tpl'
       }))
-      .use(function*() {
-        yield this.render('fixtures/tpl', { tpl: 'tpl' });
+      .use(ctx => {
+        return ctx.render('fixtures/tpl', { tpl: 'tpl' });
       });
 
     request(app.listen()).get('/')
@@ -61,16 +61,16 @@ describe('koa-views', function() {
   });
 
   it('should render with filter', function(done) {
-    var app = koa()
-      .use(views(__dirname, {
+    const app = new Koa();
+    app.use(view(__dirname, {
         filters: {
           shorten: function(str, count) {
             return str.slice(0, count || 5);
           }
         }
       }))
-      .use(function*() {
-        yield this.render('fixtures/filter', { msg: '1234567' });
+      .use(ctx => {
+        return ctx.render('fixtures/filter', { msg: '1234567' });
       });
 
     request(app.listen()).get('/')
@@ -80,14 +80,14 @@ describe('koa-views', function() {
   });
 
   it('should render with global', function(done) {
-    var app = koa()
-      .use(views(__dirname, {
+    const app = new Koa();
+    app.use(view(__dirname, {
         globals: {
           msg: function() { return '1234567890'; }
         }
       }))
-      .use(function*() {
-        yield this.render('fixtures/global');
+      .use(ctx => {
+        return ctx.render('fixtures/global');
       });
 
     request(app.listen()).get('/')
