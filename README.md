@@ -13,7 +13,7 @@ Template rendering middleware for koa (using [nunjucks](https://github.com/mozil
 $ npm install koa-view
 ```
 
-## [Example](./examples/demo-koa)
+## [Example](./examples/simple)
 
 ```js
 var view = require('koa-view');

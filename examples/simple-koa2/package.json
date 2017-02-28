@@ -1,5 +1,5 @@
 {
-  "name": "demo-koa2",
+  "name": "simple-koa2",
   "version": "0.0.1",
   "description": "koa-view demo for koa@2",
   "scripts": {
