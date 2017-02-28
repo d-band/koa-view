@@ -25,7 +25,7 @@ module.exports = (path, opts) => {
     env.addGlobal(g, globals[g]);
   }
 
-  return function* views(next) {
+  return function* view(next) {
     if (this.render) return yield next;
 
     var render = nunjucks.render;
