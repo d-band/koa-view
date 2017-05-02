@@ -1,5 +1,7 @@
 # koa-view
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/d-band/koa-view.svg)](https://greenkeeper.io/)
+
 [![NPM version](https://img.shields.io/npm/v/koa-view.svg)](https://www.npmjs.com/package/koa-view)
 [![Dependency Status](https://david-dm.org/d-band/koa-view.svg)](https://david-dm.org/d-band/koa-view)
 [![Build Status](https://travis-ci.org/d-band/koa-view.svg?branch=master)](https://travis-ci.org/d-band/koa-view)
