@@ -36,7 +36,8 @@ module.exports = (path, opts) => {
       return new Promise((res, rej) => {
         render(view + ext, state, (err, html) => {
           if (err) return rej(err);
-          ctx.type = 'text/html';
+          // Render with response content-type, fallback to text/html
+          ctx.type = ctx.type || 'text/html';
           ctx.body = html;
           res();
         });
