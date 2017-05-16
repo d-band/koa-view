@@ -95,4 +95,20 @@ describe('koa-view', function() {
       .expect(/basic:1234567890/)
       .expect(200, done);
   });
+
+  it('should render with response content-type', function(done) {
+    const app = new Koa();
+    app.use(view(__dirname, {
+        ext: 'json'
+      }))
+      .use(ctx => {
+        ctx.type = 'application/json';
+        return ctx.render('fixtures/basic', { json: 'json' });
+      });
+
+    request(app.listen()).get('/')
+      .expect('Content-Type', /json/)
+      .expect(/\"basic\": \"json\"/)
+      .expect(200, done);
+  });
 });
