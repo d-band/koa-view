@@ -1,6 +1,6 @@
 {
   "name": "koa-view",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "koa view use nunjucks",
   "main": "index.js",
   "scripts": {
@@ -24,14 +24,14 @@
   },
   "homepage": "https://github.com/d-band/koa-view#readme",
   "dependencies": {
-    "nunjucks": "^3.0.0"
+    "nunjucks": "^3.1.3"
   },
   "devDependencies": {
-    "coveralls": "^3.0.0",
+    "coveralls": "^3.0.2",
     "istanbul": "^0.4.5",
-    "koa": "^2.0.1",
+    "koa": "^2.6.1",
     "mocha": "^5.0.0",
-    "should": "^13.0.0",
-    "supertest": "^3.0.0"
+    "should": "^13.2.3",
+    "supertest": "^3.3.0"
   }
 }
