@@ -4,9 +4,9 @@
   "description": "koa view use nunjucks",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --exit -R spec",
-    "report": "istanbul cover _mocha -- --exit -R spec",
-    "coveralls": "npm run report && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
+    "test": "nyc mocha --exit -R spec",
+    "report": "nyc report --reporter=html",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -28,9 +28,9 @@
   },
   "devDependencies": {
     "coveralls": "^3.0.2",
-    "istanbul": "^0.4.5",
     "koa": "^2.7.0",
-    "mocha": "^5.0.0",
+    "mocha": "^6.0.0",
+    "nyc": "^13.3.0",
     "should": "^13.2.3",
     "supertest": "^3.4.2"
   }
