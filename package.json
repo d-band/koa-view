@@ -1,6 +1,6 @@
 {
   "name": "koa-view",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "koa view use nunjucks",
   "main": "index.js",
   "scripts": {
