@@ -24,14 +24,14 @@
   },
   "homepage": "https://github.com/d-band/koa-view#readme",
   "dependencies": {
-    "nunjucks": "^3.1.7"
+    "nunjucks": "^3.2.0"
   },
   "devDependencies": {
-    "coveralls": "^3.0.2",
+    "coveralls": "^3.0.3",
     "koa": "^2.7.0",
-    "mocha": "^6.0.0",
-    "nyc": "^13.3.0",
+    "mocha": "^6.1.4",
+    "nyc": "^14.1.1",
     "should": "^13.2.3",
-    "supertest": "^3.4.2"
+    "supertest": "^4.0.2"
   }
 }
