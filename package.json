@@ -29,7 +29,7 @@
   "devDependencies": {
     "coveralls": "^3.0.9",
     "koa": "^2.11.0",
-    "mocha": "^7.0.1",
+    "mocha": "^7.2.0",
     "nyc": "^15.0.0",
     "should": "^13.2.3",
     "supertest": "^4.0.2"
