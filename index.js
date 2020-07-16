@@ -28,13 +28,12 @@ module.exports = (path, opts) => {
   return function view(ctx, next) {
     if (ctx.render) return next();
 
-    const render = nunjucks.render;
     // Render `view` with `locals` and `koa.ctx.state`.
     ctx.render = (view, locals) => {
       const state = Object.assign({}, ctx.state, locals);
 
       return new Promise((res, rej) => {
-        render(view + ext, state, (err, html) => {
+        env.render(view + ext, state, (err, html) => {
           if (err) return rej(err);
           // Render with response content-type, fallback to text/html
           ctx.type = ctx.type || 'text/html';
