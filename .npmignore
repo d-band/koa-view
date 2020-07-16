@@ -6,3 +6,5 @@ node_modules
 examples
 coverage
 test
+.nyc_output
+.travis.yml
