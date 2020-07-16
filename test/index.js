@@ -36,6 +36,19 @@ describe('koa-view', function() {
     app.use(view(__dirname))
       .use(ctx => {
         ctx.state = { html: 'html' };
+        return ctx.render('fixtures/not_found');
+      });
+
+    request(app.listen()).get('/')
+      .expect('Internal Server Error')
+      .expect(500, done);
+  });
+
+  it('should render ctx state', function(done) {
+    const app = new Koa();
+    app.use(view(__dirname))
+      .use(ctx => {
+        ctx.state = { html: 'html' };
         return ctx.render('fixtures/basic');
       });
 
