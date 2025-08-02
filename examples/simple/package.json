@@ -13,7 +13,7 @@
   "author": "d-band",
   "license": "MIT",
   "dependencies": {
-    "koa": "^2.0.1",
+    "koa": "^3.0.1",
     "koa-view": "latest"
   }
 }
